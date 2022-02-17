@@ -1,5 +1,7 @@
-const { Client, Intents } = require('discord.js');
+const { Client, Collection, Intents } = require('discord.js');
 const dotenv = require('dotenv');
+const fs = require('fs');
+
 dotenv.config();
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
@@ -7,7 +9,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const file of eventFiles) {
-	const event = require(`./eve/${file}`);
+	const event = require(`./events/${file}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args));
 	} else {
