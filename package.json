@@ -4,7 +4,7 @@
   "description": "A boilerplate for all my discord bots",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node scripts/index.js"
   },
   "author": "PleulSolutions",
   "license": "ISC",
