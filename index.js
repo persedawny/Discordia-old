@@ -1,4 +1,4 @@
-const CustomClient = require('./customClasses/customClient.js');
+const CustomClient = require('./src/classes/customClient.js');
 const dotenv = require('dotenv');
 
 dotenv.config();

@@ -11,7 +11,7 @@ class CustomClient extends Client {
     }
 
     initializeEvents() {
-        const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
+        const eventFiles = fs.readdirSync('./src/events').filter(file => file.endsWith('.js'));
 
         for (const file of eventFiles) {
             const event = require(`../events/${file}`);
@@ -24,7 +24,7 @@ class CustomClient extends Client {
     }
 
     initializeCommands() {
-        const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+        const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
         for (const file of commandFiles) {
             const command = require(`../commands/${file}`);

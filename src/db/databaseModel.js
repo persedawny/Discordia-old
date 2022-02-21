@@ -1,5 +1,6 @@
 class DatabaseModel {
     constructor(client, tableName) {
+        this.rowid = 0;
         this.client = client;
         this.tableName = tableName;
     }
