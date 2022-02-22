@@ -5,7 +5,16 @@ class DatabaseModel {
         this.tableName = tableName;
     }
 
-    RunQuery(query, paramaters) {
+    RunQuery(query){
+        try {
+            let preparedQuery = this.client.databaseConnection.prepare(query);
+            preparedQuery.run()
+        } catch (ex) {
+            throw ex;
+        }
+    }
+
+    RunQueryWithParameters(query, paramaters) {
         try {
             let preparedQuery = this.client.databaseConnection.prepare(query);
             preparedQuery.run(paramaters)
@@ -15,6 +24,13 @@ class DatabaseModel {
     }
 
     CreateTable() {
+        let properties = this.GetDerivedClassProperties();
+        let query = "CREATE TABLE IF NOT EXISTS " + this.tableName + " (rowid, " + properties.join(', ') + ")";
+
+        this.RunQuery(query);
+    }
+
+    GetDerivedClassProperties(){
         let newBase = new DatabaseModel(this.client);
         let baseProperties = Object.getOwnPropertyNames(newBase);
         let properties = Object.getOwnPropertyNames(this);
@@ -22,8 +38,10 @@ class DatabaseModel {
         for (let i = 0; i < baseProperties.length; i++)
             properties.shift();
 
-        let query = "CREATE TABLE IF NOT EXISTS " + this.tableName + " (rowid, " + properties.join(', ') + ")";
-        this.client.databaseConnection.prepare(query);
+        if(!properties.length)
+            throw 'No properties were found in the derived class!'
+        
+        return properties;
     }
 }
 
