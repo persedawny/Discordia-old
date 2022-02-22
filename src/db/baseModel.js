@@ -1,4 +1,4 @@
-class DatabaseModel {
+class BaseModel {
     constructor(client, tableName) {
         this.rowid = 0;
         this.client = client;
@@ -31,7 +31,7 @@ class DatabaseModel {
     }
 
     GetDerivedClassProperties(){
-        let newBase = new DatabaseModel(this.client);
+        let newBase = new BaseModel(this.client);
         let baseProperties = Object.getOwnPropertyNames(newBase);
         let properties = Object.getOwnPropertyNames(this);
 
@@ -45,4 +45,4 @@ class DatabaseModel {
     }
 }
 
-module.exports = DatabaseModel
+module.exports = BaseModel

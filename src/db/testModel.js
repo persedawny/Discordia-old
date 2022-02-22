@@ -1,6 +1,6 @@
-const DatabaseModel = require('./databaseModel');
+const BaseModel = require('./baseModel');
 
-class TestModel extends DatabaseModel {
+class TestModel extends BaseModel {
     constructor(client){
         super(client, "Test");
         this.TestValue = "Value"
