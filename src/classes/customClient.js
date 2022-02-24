@@ -11,10 +11,11 @@ class CustomClient extends Client {
     }
 
     initializeEvents() {
-        const eventFiles = fs.readdirSync('./src/events').filter(file => file.endsWith('.js'));
+        let eventFiles = fs.readdirSync('./src/events').filter(file => file.endsWith('.js'));
 
-        for (const file of eventFiles) {
-            const event = require(`../events/${file}`);
+        for (let file of eventFiles) {
+            let event = require(`../events/${file}`);
+
             if (event.once) {
                 super.once(event.name, (...args) => event.execute(...args));
             } else {
@@ -26,9 +27,18 @@ class CustomClient extends Client {
     initializeCommands() {
         const commandFiles = fs.readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
-        for (const file of commandFiles) {
-            const command = require(`../commands/${file}`);
+        for (let file of commandFiles) {
+            let command = require(`../commands/${file}`);
             this.commands.set(command.data.name, command);
+        }
+    }
+
+    initializeAndStartCronJobs() {
+        let jobFiles = fs.readdirSync('./src/cronjobs').filter(file => file.endsWith('.js'));
+
+        for (const file of jobFiles) {
+            let job = require(`../cronjobs/${file}`);
+            new job().start();
         }
     }
 }

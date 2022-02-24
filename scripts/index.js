@@ -11,5 +11,4 @@ DatabaseCreator.CreateDatabase(client);
 client.initializeEvents();
 client.initializeCommands();
 client.login(process.env.DISCORD_TOKEN);
-
-new MorningCronJob().start();
+client.initializeAndStartCronJobs();
