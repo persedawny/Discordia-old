@@ -1,24 +1,22 @@
 {
-  "name": "discord.js-boilerplate",
-  "version": "0.1.0",
-  "description": "A boilerplate for all my discord bots",
-  "main": "index.js",
+  "name": "discordjs-boilerplate-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
   "scripts": {
-    "test": "node scripts/index.js"
+    "start": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
+    "deploy-commands": "ts-node-dev --respawn --transpile-only --poll ./src/deploy-commands.ts"
   },
-  "author": "PleulSolutions",
-  "license": "ISC",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "yarn@3.2.0",
   "dependencies": {
-    "@discordjs/builders": "^0.12.0",
-    "@discordjs/rest": "^0.3.0",
     "better-sqlite3": "^7.5.0",
     "cron": "^1.8.2",
-    "discord-api-types": "^0.27.1",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
-    "fs": "^0.0.1-security"
-  },
-  "devDependencies": {
-    "eslint": "^8.9.0"
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.2"
   }
 }
