@@ -1,12 +1,11 @@
-import { Interaction, Message, MessageInteraction } from "discord.js";
-import { ICommand } from "../../abstractions/ICommand";
+import { Message } from "discord.js";
 
 export default {
 	name: 'interactionCreate',
 	async execute(interaction) {
 		if (!interaction.isCommand()) return;
 		
-		const command = interaction.client.commands.get(interaction.commandName) as ICommand;
+		const command = interaction.client.commands.get(interaction.commandName);
 		
 		if (!command) return;
 		
