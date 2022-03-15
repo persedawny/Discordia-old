@@ -11,7 +11,7 @@ export class BaseEntity {
         this.tableName = tableName;
     }
 
-    RunQuery(query){
+    private RunQuery(query){
         try {
             let preparedQuery = this.client.databaseConnection.prepare(query);
             preparedQuery.run()
