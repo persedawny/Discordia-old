@@ -20,23 +20,14 @@ export class BaseEntity {
         }
     }
 
-    RunQueryWithParameters(query, paramaters) {
-        try {
-            let preparedQuery = this.client.databaseConnection.prepare(query);
-            preparedQuery.run(paramaters)
-        } catch (ex) {
-            throw ex;
-        }
-    }
-
-    CreateTable() {
+    public CreateTable() {
         let properties = this.GetDerivedClassProperties();
         let query = "CREATE TABLE IF NOT EXISTS " + this.tableName + " (rowid, " + properties.join(', ') + ")";
 
         this.RunQuery(query);
     }
 
-    GetDerivedClassProperties(){
+    private GetDerivedClassProperties(){
         let newBase = new BaseEntity(this.client);
         let baseProperties = Object.getOwnPropertyNames(newBase);
         let properties = Object.getOwnPropertyNames(this);
