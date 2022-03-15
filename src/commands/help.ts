@@ -9,8 +9,8 @@ export default class implements ICommand {
 
     constructor(client: CustomClient){
         this.data = new SlashCommandBuilder()
-		.setName('help')
-		.setDescription('Replies with standard information of the current user.');
+		    .setName('help')
+		    .setDescription('Sends information of every known command.');
 
         this.client = client;
     }
