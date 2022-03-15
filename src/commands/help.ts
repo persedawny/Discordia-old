@@ -15,6 +15,7 @@ export default class implements ICommand {
 
         this.client = client;
     }
+    
 
     execute(interaction: Message): void {
         var reaction = "";

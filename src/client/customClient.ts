@@ -1,12 +1,12 @@
 import { Client, Collection, Intents } from "discord.js";
 import { ICommand } from "../abstractions/ICommand";
+import Database from 'better-sqlite3';
 
 const fs = require('fs');
-const Database = require('better-sqlite3');
 
 class CustomClient extends Client {
     commands: Collection<string, ICommand>;
-    databaseConnection: any;
+    databaseConnection: Database;
 
     constructor() {
         super({ intents: [Intents.FLAGS.GUILDS] });

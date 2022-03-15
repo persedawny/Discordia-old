@@ -6,5 +6,6 @@ export interface ICommand {
     data: SlashCommandBuilder;
     client: CustomClient;
     isAdminOnly: boolean;
+    
     execute: (interaction: Message) => void;
 }

@@ -2,7 +2,7 @@ import { CustomClient } from "../client/customClient";
 
 export class BaseEntity {
     rowid: number;
-    client: CustomClient;
+    private client: CustomClient;
     tableName: string;
 
     constructor(client, tableName?) {
@@ -22,7 +22,7 @@ export class BaseEntity {
 
     public CreateTable() {
         let properties = this.GetDerivedClassProperties();
-        let query = "CREATE TABLE IF NOT EXISTS " + this.tableName + " (rowid, " + properties.join(', ') + ")";
+        let query = "CREATE TABLE IF NOT EXISTS " + this.tableName + " (rowid INTEGER PRIMARY KEY NOT NULL, " + properties.join(', ') + ")";
 
         this.RunQuery(query);
     }
