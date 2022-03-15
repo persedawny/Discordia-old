@@ -1,6 +1,6 @@
-import { CustomClient } from "../classes/customClient";
+import { CustomClient } from "../client/customClient";
 
-export class BaseModel {
+export class BaseEntity {
     rowid: number;
     client: CustomClient;
     tableName: string;
@@ -37,7 +37,7 @@ export class BaseModel {
     }
 
     GetDerivedClassProperties(){
-        let newBase = new BaseModel(this.client);
+        let newBase = new BaseEntity(this.client);
         let baseProperties = Object.getOwnPropertyNames(newBase);
         let properties = Object.getOwnPropertyNames(this);
 

@@ -1,4 +1,4 @@
-import { CustomClient } from "./classes/customClient";
+import { CustomClient } from "./client/customClient";
 const dotenv = require('dotenv');
 
 dotenv.config();

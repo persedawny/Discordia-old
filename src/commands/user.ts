@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { ICommand } from "../abstractions/iCommand";
+import { ICommand } from "../abstractions/ICommand";
 
 export default class UserCommand implements ICommand {
 	data: SlashCommandBuilder;

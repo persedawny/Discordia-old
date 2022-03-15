@@ -14,10 +14,10 @@ class CustomClient extends Client {
     }
 
     initializeEvents() {
-        let eventFiles = fs.readdirSync('./src/events').filter(file => file.endsWith('.ts'));
+        let eventFiles = fs.readdirSync('./src/client/events').filter(file => file.endsWith('.ts'));
 
         for (let file of eventFiles) {
-            let event = require(`../events/${file}`);
+            let event = require(`./events/${file}`);
 
             if (event.once) {
                 super.once(event.default.name, (...args) => event.default.execute(...args));

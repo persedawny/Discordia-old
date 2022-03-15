@@ -1,4 +1,4 @@
-import { CustomCronJob } from "../classes/CustomCronJob";
+import { CustomCronJob } from "./customCronJob";
 
 class MorningCronJob extends CustomCronJob{
     constructor(){
