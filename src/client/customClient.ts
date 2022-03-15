@@ -1,5 +1,5 @@
 import { Client, Collection, Intents } from "discord.js";
-import { ICommand } from "../abstractions/iCommand";
+import { ICommand } from "../abstractions/ICommand";
 
 const fs = require('fs');
 const Database = require('better-sqlite3');
