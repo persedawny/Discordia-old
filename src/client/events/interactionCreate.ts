@@ -1,13 +1,23 @@
+import { Interaction, Message, MessageInteraction } from "discord.js";
+import { ICommand } from "../../abstractions/ICommand";
+
 export default {
 	name: 'interactionCreate',
 	async execute(interaction) {
 		if (!interaction.isCommand()) return;
 		
-		const command = interaction.client.commands.get(interaction.commandName);
+		const command = interaction.client.commands.get(interaction.commandName) as ICommand;
 		
 		if (!command) return;
 		
 		try {
+			let message = interaction as Message;
+			
+			if(command.isAdminOnly || message.author.id != '115175198537285635'){
+				message.reply("Not authorised - Administrator permission required");
+				return;
+			}
+
 			await command.execute(interaction);
 		} catch (error) {
 			console.error(error);

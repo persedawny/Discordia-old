@@ -6,6 +6,7 @@ import { CustomClient } from "../client/customClient";
 export default class implements ICommand {
     data: SlashCommandBuilder;
     client: CustomClient;
+    isAdminOnly: boolean = false;
 
     constructor(client: CustomClient){
         this.data = new SlashCommandBuilder()
