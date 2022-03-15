@@ -1,6 +1,6 @@
-import { CustomCronJob } from "./customCronJob";
+import { CustomCronJob } from "../customCronJob";
 
-class MorningCronJob extends CustomCronJob{
+export default class extends CustomCronJob{
     constructor(){
         super('00', '00', '9', func)
     }
@@ -9,5 +9,3 @@ class MorningCronJob extends CustomCronJob{
 function func() {
     console.log("asdbhasdlkiasd");
 }
-
-export{MorningCronJob}

@@ -39,11 +39,11 @@ class CustomClient extends Client {
     }
 
     initializeAndStartCronJobs() {
-        let jobFiles = fs.readdirSync('./src/cronjobs').filter(file => file.endsWith('.ts'));
+        let jobFiles = fs.readdirSync('./src/cronjobs/jobs').filter(file => file.endsWith('.ts'));
 
         for (const file of jobFiles) {
-            let job = require(`../cronjobs/${file}`);
-            new job.MorningCronJob().start();
+            let job = require(`../cronjobs/jobs/${file}`);
+            new job.default().start();
         }
     }
 }

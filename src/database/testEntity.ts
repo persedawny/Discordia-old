@@ -1,10 +1,11 @@
-import { BaseEntity } from "./baseModel";
+import { BaseEntity } from "./baseEntity";
 
-export class TestEntity extends BaseEntity {
+export class TestEntity extends BaseEntity { 
     TestValue: string;
-    
+
     constructor(client){
         super(client, "Test");
-        this.TestValue = "Value"
+        
+        this.TestValue = "Test";
     }
 }
