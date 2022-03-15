@@ -1,10 +1,11 @@
 import { Client, Collection, Intents } from "discord.js";
+import { ICommand } from "../abstractions/iCommand";
 
 const fs = require('fs');
 const Database = require('better-sqlite3');
 
 class CustomClient extends Client {
-    commands: Collection<string, any>;
+    commands: Collection<string, ICommand>;
     databaseConnection: any;
 
     constructor() {
@@ -32,7 +33,7 @@ class CustomClient extends Client {
 
         for (let file of commandFiles) {
             let commandFile = require(`../commands/${file}`);
-            let command = new commandFile.default();
+            let command = new commandFile.default(this);
 
             this.commands.set(command.data.name, command);
         }

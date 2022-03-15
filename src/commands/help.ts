@@ -1,17 +1,28 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { Message } from "discord.js";
 import { ICommand } from "../abstractions/ICommand";
+import { CustomClient } from "../client/customClient";
 
 export default class implements ICommand {
     data: SlashCommandBuilder;
+    client: CustomClient;
 
-    constructor(){
+    constructor(client: CustomClient){
         this.data = new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('Replies with standard information of the current user.'); 
+		.setDescription('Replies with standard information of the current user.');
+
+        this.client = client;
     }
 
     execute(interaction: Message): void {
-        interaction.reply("Help");
+        var reaction = "";
+
+        this.client.commands.forEach(command => {
+            let commandText = `${command.data.name}: ${command.data.description} \n`;
+            reaction += commandText;
+        });
+
+        interaction.reply(reaction);
     }
 }
