@@ -12,7 +12,7 @@ export default {
 		try {
 			let message = interaction as CommandInteraction;
 			
-			if(command.isAdminOnly || message.user.id != '115175198537285635'){
+			if(command.isAdminOnly && message.user.id != '115175198537285635'){
 				message.reply("Not authorised - Administrator permission required");
 				return;
 			}
