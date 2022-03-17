@@ -19,12 +19,10 @@ export default class implements ICommand {
     
     execute(interaction: CommandInteraction): void {
         // TODO: Embed maker in boilerplate?
-        console.log(this.client.application);
-        
         let exampleEmbed = new MessageEmbed()
-        .setAuthor({ name: this.client.application.name })
-        .setImage(this.client.application.icon)
-        .setTimestamp();
+        .setAuthor({ name: this.client.user.username, iconURL: this.client.user.avatarURL() })
+        .setTimestamp()
+        .setColor("#ADD8E6");;
 
         this.client.commands.forEach(command => {
             exampleEmbed.addField(command.data.name, command.data.description, true);
