@@ -22,7 +22,7 @@ export default class implements ICommand {
         let exampleEmbed = new MessageEmbed()
         .setAuthor({ name: this.client.user.username, iconURL: this.client.user.avatarURL() })
         .setTimestamp()
-        .setColor("#ADD8E6");;
+        .setColor("#ADD8E6");
 
         this.client.commands.forEach(command => {
             exampleEmbed.addField(command.data.name, command.data.description, true);
