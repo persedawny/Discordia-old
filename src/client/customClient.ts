@@ -43,8 +43,8 @@ class CustomClient extends Client {
         let jobFiles = fs.readdirSync('./src/cronjobs/jobs').filter(file => file.endsWith('.ts'));
 
         for (const file of jobFiles) {
-            let job = require(`../cronjobs/jobs/${file}`).default(this);
-            new job.start();
+            let job = require(`../cronjobs/jobs/${file}`);
+            new job.default(this).start();
         }
     }
 }
