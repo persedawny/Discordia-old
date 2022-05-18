@@ -3,10 +3,8 @@ import { CustomCronJob } from "../customCronJob";
 
 export default class extends CustomCronJob{
     constructor(client: CustomClient){
-        super('00', '00', '9', func)
+        super('00', '00', '9', () => {
+            // Your code goes here
+        })
     }
-}
-
-function func() {
-    console.log("asdbhasdlkiasd");
 }
